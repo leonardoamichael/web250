@@ -1,42 +1,58 @@
 <?php
 
 class Movie {
-  var $title;
-  var $genre;
-  var $release_year;
-  var $length_in_minutes;
+  var $title = "Crash Landing On You";
+  var $genre = "Foreign Film";
+  var $releaseYear;
+  var $lengthInMinutes;
   var $director;
   var $rating;
 
-  function minutes_to_hours() {
-    return round($this->length_in_minutes / 60, 2);
+  function minutesToHours() {
+    return round($this->lengthInMinutes / 60, 2);
   }
 }
 
 class ForeignFilm extends Movie {
-  var $has_subtitles;
-  var $has_english_voiceover;
-  var $country;
+  var $hasSubtitles;
+  var $hasEnglishVoiceover;
+  var $country = "South Korea";
+  var $subGenre;
 
-  function is_suited_for_english_audience() {
-  return $this->has_subtitles || $this->has_english_voiceover;
+  function isSuitedForEnglishAudience() {
+  return $this->hasSubtitles || $this->hasEnglishVoiceover;
 }
 }
 
-$ish = new ForeignFilm;
-$ish->title = 'I am still here';
-$ish->genre = 'Period piece';
-$ish->release_year = '2025';
-$ish->length_in_minutes = "87";
-$ish->director = "Walter Salles";
-$ish->rating = "PG-13";
-$ish->has_subtitles = true;
-$ish->has_english_voiceover = false;
-$ish->country = "Brazil";
+class ForeignSeries extends ForeignFilm {
+  var $numberOfEpisodes;
+  var $numberOfSeasons;
+  var $stillAiring;
 
-echo "<h2>" . $ish->title . "</h2>";
-echo "Sub-Genre: " . $ish->genre . "<br>";
-echo "Country: " . $ish->country . "<br>";
-echo "Release Year: " . $ish->release_year . "<br>";
-echo "Length: " . $ish->length_in_minutes . " minutes (" . $ish->minutes_to_hours() . " hours)<br>";
-echo "Suited for English audience? " . ($ish->is_suited_for_english_audience() ? "Yes" : "No") . "<br>";
+  function isSeries() {
+  return $this->numberOfEpisodes > 1 ;
+}
+}
+
+
+$clon = new ForeignSeries;
+$clon->subGenre = 'Korean Drama';
+$clon->releaseYear = '2025';
+$clon->numberOfEpisodes = "13";
+$clon->lengthInMinutes = "45";
+$clon->director = "Walter Salles";
+$clon->hasSubtitles = true;
+$clon->hasEnglishVoiceover = false;
+
+$isSeriesText = $clon->isSeries() ? "Yes" : "No";
+$isSuitedText = $clon->isSuitedForEnglishAudience() ? "Yes" : "No";
+$hours = $clon->minutesToHours();
+
+echo "<h2>" . $clon->title . "</h2>";
+echo "Genre: " . $clon->genre . "<br>";
+echo "Sub-Genre: " . $clon->subGenre . "<br>";
+echo "Country: " . $clon->country . "<br>";
+echo "Release Year: " . $clon->releaseYear . "<br>";
+echo "Is this a series? " . $isSeriesText . "<br>";
+echo "Length: " . $clon->lengthInMinutes . " minutes (" . $hours . " hours)<br>";
+echo "Suited for English audience? " . $isSuitedText . "<br>";
