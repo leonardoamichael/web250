@@ -1,23 +1,36 @@
 <?php
 
 class Movie {
-  var $title = "Crash Landing On You";
-  var $genre = "Foreign Film";
-  var $releaseYear;
-  var $lengthInMinutes;
-  var $director;
-  var $rating;
+  public $title = "Crash Landing On You";
+  public $genre = "Foreign Film";
+  protected $releaseYear;
+  private $lengthInMinutes;
+  public $director;
+  public $rating;
 
-  function minutesToHours() {
+  public function setLengthInMinutes($value) { 
+    $this->lengthInMinutes = (int)$value; 
+  }
+    
+  public function getLengthInMinutes() {
+    return $this->lengthInMinutes; 
+  }
+
+  public function setReleaseYear($value) {
+    $this->releaseYear = (int)$value;
+  }
+  public function getReleaseYear() { return $this->releaseYear; }
+
+  public function minutesToHours() {
     return round($this->lengthInMinutes / 60, 2);
   }
 }
 
 class ForeignFilm extends Movie {
-  var $hasSubtitles;
-  var $hasEnglishVoiceover;
-  var $country = "South Korea";
-  var $subGenre;
+  public $hasSubtitles;
+  public $hasEnglishVoiceover;
+  public $country = "South Korea";
+  public $subGenre;
 
   function isSuitedForEnglishAudience() {
   return $this->hasSubtitles || $this->hasEnglishVoiceover;
@@ -25,9 +38,9 @@ class ForeignFilm extends Movie {
 }
 
 class ForeignSeries extends ForeignFilm {
-  var $numberOfEpisodes;
-  var $numberOfSeasons;
-  var $stillAiring;
+  public $numberOfEpisodes;
+  public $numberOfSeasons;
+  public $stillAiring;
 
   function isSeries() {
   return $this->numberOfEpisodes > 1 ;
@@ -35,24 +48,24 @@ class ForeignSeries extends ForeignFilm {
 }
 
 
-$clon = new ForeignSeries;
-$clon->subGenre = 'Korean Drama';
-$clon->releaseYear = '2025';
-$clon->numberOfEpisodes = "13";
-$clon->lengthInMinutes = "45";
-$clon->director = "Walter Salles";
-$clon->hasSubtitles = true;
-$clon->hasEnglishVoiceover = false;
+$crashLanding = new ForeignSeries;
+$crashLanding->subGenre = 'Korean Drama';
+$crashLanding->setReleaseYear(2025);
+$crashLanding->numberOfEpisodes = "13";
+$crashLanding->setLengthInMinutes(45);
+$crashLanding->director = "Lee Jung-hyo";
+$crashLanding->hasSubtitles = true;
+$crashLanding->hasEnglishVoiceover = false;
 
-$isSeriesText = $clon->isSeries() ? "Yes" : "No";
-$isSuitedText = $clon->isSuitedForEnglishAudience() ? "Yes" : "No";
-$hours = $clon->minutesToHours();
+$isSeriesText = $crashLanding->isSeries() ? "Yes" : "No";
+$isSuitedText = $crashLanding->isSuitedForEnglishAudience() ? "Yes" : "No";
+$hours = $crashLanding->minutesToHours();
 
-echo "<h2>" . $clon->title . "</h2>";
-echo "Genre: " . $clon->genre . "<br>";
-echo "Sub-Genre: " . $clon->subGenre . "<br>";
-echo "Country: " . $clon->country . "<br>";
-echo "Release Year: " . $clon->releaseYear . "<br>";
+echo "<h2>" . $crashLanding->title . "</h2>";
+echo "Genre: " . $crashLanding->genre . "<br>";
+echo "Sub-Genre: " . $crashLanding->subGenre . "<br>";
+echo "Country: " . $crashLanding->country . "<br>";
+echo "Release Year: " . $crashLanding->getReleaseYear() . "<br>";
 echo "Is this a series? " . $isSeriesText . "<br>";
-echo "Length: " . $clon->lengthInMinutes . " minutes (" . $hours . " hours)<br>";
+echo "Length: " . $crashLanding->getLengthInMinutes() . " minutes (" . $hours . " hours)<br>";
 echo "Suited for English audience? " . $isSuitedText . "<br>";
