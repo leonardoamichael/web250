@@ -32,7 +32,7 @@ class ForeignFilm extends Movie {
   public $country = "South Korea";
   public $subGenre;
 
-  function isSuitedForEnglishAudience() {
+  public function isSuitedForEnglishAudience() {
   return $this->hasSubtitles || $this->hasEnglishVoiceover;
 }
 }
@@ -42,7 +42,7 @@ class ForeignSeries extends ForeignFilm {
   public $numberOfSeasons;
   public $stillAiring;
 
-  function isSeries() {
+  public function isSeries() {
   return $this->numberOfEpisodes > 1 ;
 }
 }
