@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Matemasie&family=Sansita&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: verdana, arial, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+h1, section h2 {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 1.5em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  display: inline-block;
+}
+
+a i {
+  display: block;
+  margin-bottom: 0.3em;
+  transition: transform 0.3s ease;
+}
+
+a:hover i {
+  transform: scale(1.2);
+  color: #0077cc; /* change color on hover */
+}
+
+/* reset list */
+ul.card-grid { 
+  list-style: none; 
+  margin: 0; 
+  padding: 0;
+}
+
+/* responsive grid: auto-fit cards */
+ul.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+/* card link styles */
+a.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;           /* subtle border */
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  background: #fff;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+/* icon block spacing */
+a.card i { 
+  display: block; 
+}
+
+/* hover/focus effects */
+a.card:hover, a.card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  border-color: #cbd5e1;
+  outline: none;
+}
+
+/* focus ring for keyboard users */
+a.card:focus-visible {
+  box-shadow: 0 0 0 3px rgba(59,130,246,.35), 0 6px 16px rgba(0,0,0,.08);
+}
+
+/* optional: tone the icon color on hover */
+a.card:hover i, a.card:focus-visible i {
+  color: #2563eb;
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  a.card { transition: none; }
+}
