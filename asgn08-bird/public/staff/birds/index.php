@@ -20,13 +20,11 @@ $birds = Bird::find_all();
   	<table class="list">
       <tr>
         <th>ID</th>
-        <th>Brand</th>
-        <th>Model</th>
-        <th>Year</th>
-        <th>Category</th>
-        <th>Gender</th>
-        <th>Color</th>
-        <th>Price</th>
+        <th>Common Name</th>
+        <th>Habitat</th>
+        <th>Food</th>
+        <th>Conservation ID</th>
+        <th>Backyard Tips</th>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
