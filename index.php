@@ -79,6 +79,24 @@
       </li>
     </ul>
   </section>
+
+    <section>
+    <h2>Assignment 8</h2>
+    <ul class="card-grid">
+      <li>
+        <a class="card" href="assignment08/bike/public/staff">
+          <i class="fa-solid fa-bicycle fa-3x"></i><br>
+          Bicycles Project
+        </a>
+      </li>
+      <li>
+        <a class="card" href="assignment08/bird/public/staff">
+          <i class="fa-solid fa-crow fa-3x"></i><br>
+          Birds Project
+        </a>
+      </li>
+    </ul>
+  </section>
 </body>
 
 </html>
