@@ -23,8 +23,17 @@ if(!isset($bird)) {
 
 
 <dl>
-  <dt>Conservation ID</dt>
-  <dd><input type="text" name="bird[conservation_id]" value="<?php echo h($bird->conservation_id); ?>" /></dd>
+  <dt>Conservation Status</dt>
+  <dd>
+    <select name="bird[conservation_id]">
+      <?php foreach (Bird::CONSERVATION_OPTIONS as $key => $label) { ?>
+        <option value="<?php echo h($key); ?>"
+          <?php if ((string)$bird->conservation_id === (string)$key) { echo 'selected'; } ?>>
+          <?php echo h($label); ?>
+        </option>
+      <?php } ?>
+    </select>
+  </dd>
 </dl>
 
 <dl>
